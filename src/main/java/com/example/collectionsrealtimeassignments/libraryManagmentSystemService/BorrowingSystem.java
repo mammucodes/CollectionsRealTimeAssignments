@@ -23,8 +23,13 @@ public class BorrowingSystem {
     // this method user can borrow books if he already not took the same book
     //it returns false if book is already borrowed and no available.
     //it returns true if book is available
+    //if book or user name passed as null we return null values
     public Boolean borrowBook(String user, String book) {
+
         logger.info("borrowbook method called");
+        if(user==null || book == null){
+            return null;
+        }
         borrowedbooks.computeIfAbsent(user, u -> new HashSet<>());
         boolean bookisborrowed = isBookBorrowed(book);
         if (bookisborrowed) {
